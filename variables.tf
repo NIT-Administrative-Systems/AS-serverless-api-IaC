@@ -43,12 +43,10 @@ variable "log_retention_days" {
 
 variable "source_dir" {
   description = "Source code directory, relative to base module"
-  default = "../../"
 }
 
 variable "source_zip_path" {
   description = "Path to the prepared (temporary) zip file, relative to the base module"
-  default = "../../.build/package.zip"
 }
 
 variable "source_zip_excludes" {
