@@ -1,5 +1,5 @@
-# Admin Systems: Serverless API
-This is an IaC module for creating a serverless API using Lambda, HTTP APIs for Amazon API Gateway, and secrets management through SSM. It implements the Admin Systems practices outlines on our [cloud practice site](https://nit-administrative-systems.github.io/AS-CloudDocs/).
+# Admin Systems: Serverless API Infrastructure-as-Code
+This is an Terraform IaC module for creating a serverless API using Lambda, HTTP APIs for Amazon API Gateway, and secrets management through SSM. It implements the Admin Systems practices outlines on our [cloud practice site](https://nit-administrative-systems.github.io/AS-CloudDocs/).
 
 ## Usage
 This IaC module is appropriate if you're implementing a serverless API in Node. Your API should work within the limits imposed by API Gateway: no more than 30 seconds to fufill requests, and a maximum payload size of 10MB. Your API can utilize on-campus resources, like on-prem databases. You will be using Apigee to publish your API.
