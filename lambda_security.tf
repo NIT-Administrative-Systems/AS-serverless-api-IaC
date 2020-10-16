@@ -27,7 +27,7 @@ data "aws_iam_policy_document" "lambda_access_policy" {
   statement {
     effect    = "Allow"
     actions   = ["logs:CreateLogStream", "logs:PutLogEvents"]
-    resources = [aws_cloudwatch_log_group.lambda_log_group.arn]
+    resources = ["${aws_cloudwatch_log_group.lambda_log_group.arn}:*"]
   }
 
   statement {
