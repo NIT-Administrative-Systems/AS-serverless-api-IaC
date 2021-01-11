@@ -18,13 +18,13 @@ output "kms_arn" {
   value       = aws_kms_key.key.arn
 }
 
-output "parameters_arn" {
-  description = "ARN for SSM secret names"
-  value       = aws_ssm_parameter.secure_param[*].arn
-}
+# output "parameters_arn" {
+#   description = "ARN for SSM secret names"
+#   value       = aws_ssm_parameter.secure_param[count.index].arn
+# }
 
 output "security_group" {
   description = "Security group for Lambda in VPC"
-  value       = aws_security_group.api_rules[*].id
+  value       = aws_security_group.api_rules[count.index].id
 }
 
