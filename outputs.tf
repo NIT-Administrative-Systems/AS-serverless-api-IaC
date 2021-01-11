@@ -25,6 +25,6 @@ output "kms_arn" {
 
 output "security_group" {
   description = "Security group for Lambda in VPC"
-  value       = aws_security_group.api_rules[count.index].id
+  value       = aws_security_group.api_rules[*].id
 }
 
