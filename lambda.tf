@@ -6,6 +6,10 @@ data "archive_file" "app_code_zip" {
   output_path = var.source_zip_path
 }
 
+locals {
+  lambda_add_vpc_settings = var.lambda_vpc_id == "" ? [] : [1]
+}
+
 resource "aws_lambda_function" "api" {
   function_name    = local.application_name
   role             = aws_iam_role.lambda_execution_role.arn
@@ -19,11 +23,13 @@ resource "aws_lambda_function" "api" {
   timeout     = var.runtime_timeout
   runtime     = var.runtime_version
 
-  # NOTE: if both subnet_ids and security_group_ids are empty then vpc_config is considered to be empty or unset.
-  # In other words: this will make a Lambda on AWS' network if we leave both values blank.
-  vpc_config {
-    subnet_ids = length(var.lambda_subnet_ids) == 0 ? null : var.lambda_subnet_ids
-    security_group_ids = local.lambda_security_group_id
+  # The VPC config is optional; when it's not specified, this block will not be included.
+  dynamic "vpc_config" {
+    for_each = local.lambda_add_vpc_settings
+    content {
+      subnet_ids = var.lambda_subnet_ids
+      security_group_ids = local.lambda_security_group_id
+    }
   }
 
   environment {
