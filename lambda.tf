@@ -54,9 +54,13 @@ resource "aws_cloudwatch_log_group" "lambda_log_group" {
 # This way, you get the full 250MB to play with.
 resource "aws_s3_bucket" "app_code_bucket" {
   bucket = "${local.application_name}-code-deployment"
-  acl    = "private"
 
   tags = local.tags
+}
+
+resource "aws_s3_bucket_acl" "app_code_acl" {
+  bucket = aws_s3_bucket.app_code_bucket.id
+  acl    = "private"
 }
 
 resource "aws_s3_bucket_object" "app_code_s3_upload" {
