@@ -38,7 +38,7 @@ resource "aws_lambda_function" "api" {
 
   tags = local.tags
 
-  depends_on = [aws_s3_bucket_object.app_code_s3_upload]
+  depends_on = [aws_s3_object.app_code_s3_upload]
 }
 
 # Log group name **MUST** match the Lambda's name
@@ -63,7 +63,7 @@ resource "aws_s3_bucket_acl" "app_code_acl" {
   acl    = "private"
 }
 
-resource "aws_s3_bucket_object" "app_code_s3_upload" {
+resource "aws_s3_object" "app_code_s3_upload" {
   bucket = aws_s3_bucket.app_code_bucket.id
   key    = local.s3_zip_filename
   source = var.source_zip_path
