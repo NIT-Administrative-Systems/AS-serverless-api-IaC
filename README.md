@@ -21,7 +21,7 @@ The following options can be passed in to the module:
 | lambda_vpc_id       | No        | Private network ID. Specify if accessing on-campus resources | *none*             | 
 | lambda_subnet_ids   | No        | Network IP blocks. Specify if accessing on-campus resources  | []                 | 
 | runtime_memory      | No        | Memory for Lambda runtime                                    | 128                | 
-| runtime_version     | No        | Version of NodeJS to use                                     | nodejs12.x         | 
+| runtime_version     | No        | Version of NodeJS to use                                     | nodejs16.x         | 
 | runtime_timeout     | No        | Max runtime for a Lambda execution                           | 30                 | 
 | log_retention_days  | No        | Retention period for CloudWatch logs                         | 14                 | 
 | source_zip_excludes | No        | Files/folders to exclude from the source code zip file       | []                 | 
