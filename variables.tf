@@ -23,7 +23,7 @@ variable "runtime_env" {
 # Has sane defaults, probably don't need to set these yourself
 variable "runtime_version" {
     description = "AWS Lambda runtime to use"
-    default = "nodejs12.x"
+    default = "nodejs16.x"
 }
 
 variable "runtime_memory" {
